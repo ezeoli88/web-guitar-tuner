@@ -1,0 +1,72 @@
+---
+
+---
+
+<section class="px-8 pb-6 border-t border-slate-700/30 pt-6">
+  <!-- Toggle de Modo -->
+  <div class="flex items-center justify-center gap-3 mb-4">
+    <span class="text-sm text-slate-400">Modo:</span>
+    <button
+      id="mode-auto-btn"
+      class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-indigo-600 text-white select-none"
+    >
+      🎯 Auto
+    </button>
+    <button
+      id="mode-manual-btn"
+      class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-slate-700 text-slate-400 hover:bg-slate-600 select-none"
+    >
+      🎸 Manual
+    </button>
+  </div>
+
+  <!-- Nota Objetivo Seleccionada -->
+  <div
+    id="target-note-display"
+    class="text-center mb-6 hidden animate-in fade-in duration-300"
+  >
+    <span class="text-xs text-slate-500 uppercase tracking-widest"
+      >Afinando a</span
+    >
+    <div class="flex items-center justify-center gap-2">
+      <span id="target-note-name" class="text-2xl font-bold text-indigo-400"
+        >--</span
+      >
+      <span id="target-note-freq" class="text-sm text-slate-500 font-mono"
+        >-- Hz</span
+      >
+    </div>
+  </div>
+
+  <!-- Cuerdas de Referencia (Interactivas) -->
+  <div
+    id="strings-container"
+    class="grid grid-cols-3 sm:grid-cols-6 gap-2 text-center"
+  >
+    {
+      [
+        { s: 6, n: "E2", f: 82.41, note: "E", oct: 2 },
+        { s: 5, n: "A2", f: 110.0, note: "A", oct: 2 },
+        { s: 4, n: "D3", f: 146.83, note: "D", oct: 3 },
+        { s: 3, n: "G3", f: 196.0, note: "G", oct: 3 },
+        { s: 2, n: "B3", f: 246.94, note: "B", oct: 3 },
+        { s: 1, n: "E4", f: 329.63, note: "E", oct: 4 },
+      ].map((str) => (
+        <button
+          data-string={str.s}
+          data-note={str.note}
+          data-octave={str.oct}
+          data-frequency={str.f}
+          class="string-btn bg-slate-700/50 hover:bg-indigo-600/30 rounded-xl p-3 transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-indigo-500/50 group"
+        >
+          <div class="text-[10px] text-slate-500 mb-1 group-hover:text-indigo-400 transition-colors">
+            {str.s}ª
+          </div>
+          <div class="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">
+            {str.n}
+          </div>
+        </button>
+      ))
+    }
+  </div>
+</section>
